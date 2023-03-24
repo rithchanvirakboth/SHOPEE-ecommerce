@@ -1,6 +1,7 @@
 const User = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const sendMail = require('./sendMail');
 
 const RegisterService = {
   register: async (req, res) => {
@@ -68,22 +69,24 @@ const RegisterService = {
       }
 
       const passwordHash = await bcrypt.hash(password, 10);
-      const newUser = new User({
+      const newUser = {
         firstName,
         lastName,
         userName,
         email,
         password: passwordHash,
-        confirmPassword: passwordHash,
-      });
+        confirmPassword: passwordHash
+      }
 
       const activate_token = createActivationToken(newUser);
 
       const url = `${process.env.CLIENT_URL}/user/activate/${activate_token}`;
-      sendMail(email, url, "Verify your email address");
+      sendMail(email, url, "Verify your email address", "Congratulations! You're almost set to start using SHOPEE Ecommerce website.", "Welcome to the SHOPEE Ecommerce website");
 
       res.json({ msg: "Register Success! Please activate your email to start." });
-    } catch (err) {}
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
   },
 };
 
@@ -92,11 +95,8 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-function createActivationToken(payload) {
-  return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {
-    expiresIn: "5m",
-  });
+const createActivationToken = (payload) => {
+  return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {expiresIn: '5m'})
 }
-
 
 module.exports = RegisterService;
