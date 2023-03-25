@@ -1,7 +1,7 @@
 const User = require('../model/user');
 const jwt = require('jsonwebtoken');
 
-const emailActivation =  {
+const emailActivationService =  {
   activateAccount: async (req, res) => {
     try {
       const { activation_token } = req.body;
@@ -33,5 +33,5 @@ const emailActivation =  {
   }
 }
 
-module.exports = emailActivation;
+module.exports = emailActivationService;
 

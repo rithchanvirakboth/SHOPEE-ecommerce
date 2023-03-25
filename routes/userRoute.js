@@ -1,8 +1,11 @@
 const router = require('express').Router();
-const emailActivation = require('../services/emailActivation');
-const RegisterService = require('../services/register');
+const emailActivationService = require('../services/emailActivation');
+const loginService = require('../services/login');
+const registerService = require('../services/register');
 
-router.post('/register', RegisterService.register);
-router.post('/acitvated', emailActivation.activateAccount);
+router.post('/register', registerService.register);
+router.post('/acitvated', emailActivationService.activateAccount);
+router.post('/login', loginService.login);
+
 
 module.exports = router;

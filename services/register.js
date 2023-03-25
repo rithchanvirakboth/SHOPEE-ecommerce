@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendMail = require('./sendMail');
 
-const RegisterService = {
+const registerService = {
   register: async (req, res) => {
     try {
       const {
@@ -99,4 +99,4 @@ const createActivationToken = (payload) => {
   return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {expiresIn: '5m'})
 }
 
-module.exports = RegisterService;
+module.exports = registerService;
