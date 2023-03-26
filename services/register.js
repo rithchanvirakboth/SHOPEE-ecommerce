@@ -2,8 +2,14 @@ const User = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendMail = require('./sendMail');
+const {
+  txt, 
+  description, 
+  title, 
+} = require('../utils/emailTemplate');
 
 const registerService = {
+
   register: async (req, res) => {
     try {
       const {
@@ -81,7 +87,7 @@ const registerService = {
       const activate_token = createActivationToken(newUser);
 
       const url = `${process.env.CLIENT_URL}/user/activate/${activate_token}`;
-      sendMail(email, url, "Verify your email address", "Congratulations! You're almost set to start using SHOPEE Ecommerce website.", "Welcome to the SHOPEE Ecommerce website");
+      sendMail(email, url, txt, description, title);
 
       res.json({ msg: "Register Success! Please activate your email to start." });
     } catch (err) {

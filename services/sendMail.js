@@ -17,7 +17,7 @@ const oauth2Client = new OAuth2(
   OAUTH_PLAYGROUND
 );
 
-const sendMail = (to, url, txt, desc, title) => {
+const sendMail = (to, url, txt, description, title) => {
   oauth2Client.setCredentials({
     refresh_token: MAILING_SERVICE_REFRESH_TOKEN,
   });
@@ -40,9 +40,9 @@ const sendMail = (to, url, txt, desc, title) => {
     subject: txt,
     html: `
       <div style="max-width: 600px; padding: 10px; margin: auto; border: 1px solid #ddd;">
-        <h2 style="text-align: center; text-transform: uppercase;color: #5e5e4a;">${txt}</h2>
-        <h3 style="text-align: center; text-transform: uppercase;color: crimson; font-size: 20px; color: #5e5e4a">${title}</h3>
-        <p style="text-align: center; font-size: 13px; ">Please click the button below to activate your account</p>
+        <h2 style="text-align: center; text-transform: uppercase;color: #5e5e4a;">${title}</h2>
+        <h3 style="text-align: center; text-transform: uppercase;color: crimson; font-size: 20px; color: #5e5e4a">${txt}</h3>
+        <p style="text-align: center; font-size: 13px; ">${description}</p>
         <div style="text-align: center; font-size: 13px; ">
           <a href=${url} style="background: #5e5e4a; border-radius:5px; text-decoration: none; color: white; padding: 10px 20px; margin: 10px 0; display: inline-block;">${txt}</a>        
         </div>
