@@ -8,7 +8,7 @@ cloudinary.config({
 });
 
 const uploadService = {
-  uploadImage: async (req, res) => {
+  uploadAvatar: async (req, res) => {
     try {
       const file = req.files.file;
 

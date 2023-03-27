@@ -26,7 +26,6 @@ const emailActivationService =  {
       await newUser.save();
 
       res.json({ msg: "Account has been activated!" });
-
     }catch (err) {
       return res.status(500).json({ msg: err.message });
     }
