@@ -48,7 +48,7 @@ const userSchema = new schema({
   },
   avatar: {
     type: String,
-    default: '',
+    default: 'https://res.cloudinary.com/dweitfbey/image/upload/v1678790751/avatar/profile-pic_fnx36a.jpg',
   },
 }, {
   timestamps: true
