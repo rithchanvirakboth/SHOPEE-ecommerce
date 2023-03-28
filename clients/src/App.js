@@ -1,9 +1,20 @@
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import Mainpage from "./Features/Mainpage/Mainpage";
 
 function App() {
   return (
-   <div className="bg-info">
-      <h1>React App</h1>
-   </div>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Navbar />
+      </nav>
+      <main className="content">
+        <Mainpage />
+      </main>
+      <footer className="footer">
+        <Footer />
+      </footer>
+    </div>
   );
 }
 
