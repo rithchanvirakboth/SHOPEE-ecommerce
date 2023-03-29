@@ -1,4 +1,5 @@
 import React from "react";
+import { DROPDOWN_MENU } from "../../utils/const";
 
 function Dropdown() {
   return (
@@ -26,29 +27,19 @@ function Dropdown() {
           </svg>
         </button>
         <ul class="dropdown-menu" id="dropdown">
-          <li>
-            <a class="dropdown-item active" href="#">
-              Action
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Something else here
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Separated link
-            </a>
-          </li>
+          {DROPDOWN_MENU.map((item, index) => {
+            return (
+              <li key={index}>
+                {item.divider === true ? (
+                  <hr class={item.class} />
+                ) : (
+                  <a class="dropdown-item" href={item.link}>
+                    {item.title}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>

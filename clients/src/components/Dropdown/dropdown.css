@@ -2,3 +2,13 @@
   top: 100%;
   left: -90px
 }
+
+.dropdown-item {
+  color: var(--menu-color-variant-2);
+  font-size: 0.9rem;
+}
+
+.btn {
+  outline: none;
+  border: none;
+}

@@ -104,3 +104,30 @@ export const MENU_CONTACT_US = [
     ],
   }
 ];
+
+export const DROPDOWN_MENU = [
+  {
+    title: "Profile",
+    link: "/profile",
+  },
+  {
+    title: "Purchased History",
+    link: "/purchased-history",
+  },
+  {
+    title: "Setting",
+    link: "/setting",
+  },
+  {
+    title: "Shipping & Payment",
+    link: "/shipping-payment",
+  },
+  {
+    divider: true,
+    class: "dropdown-divider",
+  },
+  {
+    title: "Logout",
+    link: "/logout",
+  },
+];
