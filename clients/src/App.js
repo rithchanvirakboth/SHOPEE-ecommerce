@@ -5,7 +5,7 @@ import Mainpage from "./Features/Mainpage/Mainpage";
 function App() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <Navbar />
       </nav>
       <main className="content">

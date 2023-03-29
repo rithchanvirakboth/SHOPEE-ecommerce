@@ -1,0 +1,23 @@
+.profile {
+  width: 100%;
+  background-color: rgb(14, 14, 55);
+}
+
+.ul-profile {
+  padding: 0;
+  text-align: center;
+}
+
+.profile-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.profile-data {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: px;
+  font-family: 'monserrat', sans-serif;
+}

@@ -41,6 +41,9 @@ code {
   display: flex;
   height: 100vh;
   width: 100%;
-  background-color: #282c34;
-  color: #fff;
+  background-color: var(--menu-color-variant-3);
+  color: var(--menu-color-variant-2);
+}
+.navbar {
+  background-color: #fff;
 }

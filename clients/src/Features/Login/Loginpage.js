@@ -14,7 +14,7 @@ const loginData = {
     },
     {
       btnType: true,
-      btn: <button type="submit" className="btn-submit">Register</button>
+      btn: <button type="submit" className="btn-submit">Login</button>
     }
   ]
 }
