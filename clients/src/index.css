@@ -1,12 +1,33 @@
-/* Imported */
+/* Font imported */
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova&family=Enriqueta:wght@400;700&family=Montserrat:wght@700;800&family=Rokkitt&display=swap');
+
+/* Color palette */ 
+:root {
+  --primary-color: #c38942;
+  --primary-variant-color: #E5BA73;
+  --primary-light-color: #FAEAB1;
+  --text-white: #FAF8F1;
+  
+  --secondary-color: #876445;
+  --secondary-variant-color: #CA965c;
+  --secondary-light-color: #EFC373;
+  --secondary-color-white: #F4DFBA;
+
+  --menu-color-variant-1: #17170d;
+  --menu-color-variant-2: #5e5e4a;
+  --menu-color-variant-3: #f8f9fa;
+}
+
+/* Module Imported */
 @import url('./Features/features.css');
 @import url('./components/components.css');
+
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Enriqueta', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
