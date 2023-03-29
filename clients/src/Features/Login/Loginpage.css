@@ -1,0 +1,11 @@
+.btn-submit {
+  background-color: var(--menu-color-variant-2);
+  color: var(--text-white);
+  border-radius: 10px;
+  padding: 7px 80px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
