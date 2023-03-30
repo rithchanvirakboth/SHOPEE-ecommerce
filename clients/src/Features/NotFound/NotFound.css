@@ -1,0 +1,42 @@
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #2f3291;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #2f3291;
+}
+
+.notFound-context {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 20px 0px 20px 0px;
+  padding: 0px 200px 0px 200px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #101242;
+  letter-spacing: 0;
+}
+
+.btn-notfound {
+  background-color: var(--menu-color-variant-2);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  cursor: pointer;
+}

@@ -91,6 +91,18 @@ function Loginpage() {
                         Login
                       </button>
                     ),
+                    linkItem: [
+                      {
+                        link: "/register",
+                        linkName: "register",
+                        linkLabel: "Don't have an account?",
+                      },
+                      {
+                        link: "/forgotpassword",
+                        linkName: "forget",
+                        linkLabel: "Forgot password?",
+                      }
+                    ]
                   },
                 ],
               }}

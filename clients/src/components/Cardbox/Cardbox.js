@@ -10,7 +10,18 @@ function Cardbox({ children }) {
             return (
               <div key={index} className="form-group">
                 {item.btnType === true ? (
-                  <div className="btn-group">{item.btn}</div>
+                  <>
+                  <div className="d-flex flex-row justify-content-between">
+                    {item.linkItem.map((link, index) => {
+                        return (
+                          <div key={index} className="pt-3">
+                            <span className="link me-1">{link.linkLabel}</span><a href={link.link} className="redirect">{link.linkName}</a>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="btn-group">{item.btn}</div>
+                    </>
                 ) : (
                   <div className="form-col">
                     <label className="label">{item.label}</label>

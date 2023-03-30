@@ -218,7 +218,7 @@ function Registerpage() {
                         type="password"
                         name="confirmPassword"
                         id="confirmPassword"
-                        className="form-control"
+                        className="form-control"    
                         placeholder="Confirm your password"
                         value={confirmPassword}
                         onChange={(e) =>
@@ -234,6 +234,13 @@ function Registerpage() {
                         Register
                       </button>
                     ),
+                    linkItem: [
+                      {
+                        link: "/login",
+                        linkName: "Login",
+                        linkLabel: "Already have an account?",
+                      },
+                    ]
                   },
                 ],
               }}
