@@ -102,12 +102,15 @@ function Registerpage() {
           successMsg: "",
         });
       }
+      
 
       setUser({
         ...user,
         errorMsg: "",
         successMsg: res.data.msg,
       });
+
+      window.location.reload();
     } catch (error) {
       error.response.data.msg &&
         setUser({

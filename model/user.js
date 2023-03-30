@@ -20,7 +20,6 @@ const userSchema = new schema({
     type: String,
     required: [true, 'Please enter your username'],
     trim: true,
-    unique: true,
     min: 3,
     max: 20
   },
