@@ -1,6 +1,9 @@
+/* module imported */
 @import url('./Register/Registerpage.css');
 @import url('./Login/Loginpage.css');
 @import url('./Home/Homepage.css');
 @import url('./Profile/Profile.css');
 @import url('./NotFound/NotFound.css');
 @import url('./EmailActivate/EmailActivate.css'); 
+@import url('./ForgetPassword/ForgetPassword.css');
+@import url('./ResetPassword/ResetPassword.css')

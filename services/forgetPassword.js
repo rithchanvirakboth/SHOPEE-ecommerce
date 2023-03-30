@@ -19,7 +19,7 @@ const forgetPasswordService = {
       const checkUser = await User.findOne({ email });
 
       if (!checkUser) {
-        return res.status(400).json({ message: "Email does not exist" });
+        return res.status(400).json({ msg: "Email does not exist" });
       }
 
       const access_token = createAccessToken({ id: checkUser._id });
@@ -27,9 +27,9 @@ const forgetPasswordService = {
 
       sendMail(email, url, txtReset, descriptionReset, title);
 
-      res.json({ message: "Re-send the password, please check your email."});
+      res.json({ msg: "Re-send the password, please check your email."});
     } catch (err) {
-      return res.status(500).json({ message: err.message });
+      return res.status(500).json({ msg: err.message });
     }
   },
 };

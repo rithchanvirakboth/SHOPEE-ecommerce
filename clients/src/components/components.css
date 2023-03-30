@@ -1,6 +1,7 @@
-/* imported */
+/* module imported */
 @import url('./Footer/Footer.css');
 @import url('./Dropdown/dropdown.css');
 @import url('./Menu/Menu.css');
 @import url('./Cardbox/Cardbox.css');
 @import url('./Offcanva/Offcanva.css');
+@import url('./Card/Card.css');

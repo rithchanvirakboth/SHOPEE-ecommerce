@@ -98,7 +98,7 @@ function Loginpage() {
                         linkLabel: "Don't have an account?",
                       },
                       {
-                        link: "/forgotpassword",
+                        link: "/forgetPassword",
                         linkName: "forget",
                         linkLabel: "Forgot password?",
                       }
