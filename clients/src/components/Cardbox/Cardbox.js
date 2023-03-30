@@ -2,10 +2,10 @@ import React from "react";
 
 function Cardbox({ children }) {
   return (
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center">{children.title}</h5>
-        <div class="card-text">
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title text-center">{children.title}</h5>
+        <div className="card-text">
           {children.formData.map((item, index) => {
             return (
               <div key={index} className="form-group">

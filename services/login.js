@@ -15,7 +15,7 @@ const loginService = {
 
       const findAccount = await User.findOne({ email });
       if (!findAccount) {
-        return res.status(400).json({ message: "User is not founded!" });
+        return res.status(400).json({ msg: "User is not founded!" });
       }
 
       const credentialCompare = await bcrypt.compare(
@@ -24,7 +24,7 @@ const loginService = {
       );
 
       if (!credentialCompare) {
-        return res.status(400).json({ message: "Credential is incorrect!" });
+        return res.status(400).json({ msg: "Credential is incorrect!" });
       }
 
       const refreshToken = createRefreshToken({ id: findAccount._id });

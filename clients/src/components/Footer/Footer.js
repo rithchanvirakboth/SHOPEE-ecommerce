@@ -15,22 +15,30 @@ function Footer() {
           <div className="d-flex justify-content-center">
             <div>
               <div className="d-flex justify-content-center">
-                {BRAND_FOOTER.map((brand) => (
-                  <img
-                    src={brand.Logo}
-                    alt="logo"
-                    width="120px"
-                    height="65px"
-                    className="mb-3"
-                  />
-                ))}
-              </div>
-              <div className="text-brand">
-                <p className="text-center">
-                  {BRAND_FOOTER.map((brand) => (
-                    <p>{brand.description}</p>
-                  ))}
-                </p>
+                <div className="d-flex flex-column">
+                  <div className="py-2">
+                    {BRAND_FOOTER.map((brand, index) => (
+                      <div
+                        className="d-flex justify-content-center"
+                        key={index}
+                      >
+                        <img
+                          src={brand.Logo}
+                          alt={brand.name}
+                          width="200px"
+                          height="100px"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="py-2 px-4">
+                    {BRAND_FOOTER.map((brand, index) => (
+                      <div className="" key={index}>
+                        <p className="text-center">{brand.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -40,8 +48,8 @@ function Footer() {
             <div>
               <h5 className="text-center">{TITLE.SERVICE}</h5>
               <ul className="list-unstyled text-small text-center">
-                {MENU.map((menu) => (
-                  <li>
+                {MENU.map((menu, index) => (
+                  <li key={index}>
                     <a href={menu.link} className="text-muted">
                       {menu.name}
                     </a>
@@ -56,8 +64,8 @@ function Footer() {
             <div>
               <h5 className="text-center">{TITLE.HELP}</h5>
               <ul className="list-unstyled text-small text-center">
-                {MENU_HELP.map((menu) => (
-                  <li>
+                {MENU_HELP.map((menu, index) => (
+                  <li key={index}>
                     <a href={menu.link} className="text-muted">
                       {menu.name}
                     </a>
@@ -72,15 +80,20 @@ function Footer() {
             <div>
               <h5 className="text-center">{TITLE.CONTACT_US}</h5>
               <ul className="list-unstyled text-small text-center">
-                {MENU_CONTACT_US.map((menu) => (
-                  <li>
+                {MENU_CONTACT_US.map((menu, index) => (
+                  <li key={index}>
                     <p className="mb-0 mt-2">{menu.name}</p>
                     {menu.socialMedia === true ? (
                       <div className="d-flex justify-content-center">
-                        {menu.socialLink.map((social) => (
-                          <a href={social.link} className="text-muted">
-                            <span className="mx-2">{social.logo}</span>
-                          </a>
+                        {menu.socialLink.map((social, index) => (
+                          <div
+                            className="d-flex justify-content-center"
+                            key={index}
+                          >
+                            <a href={social.link} className="text-muted">
+                              <span className="mx-2">{social.logo}</span>
+                            </a>
+                          </div>
                         ))}
                       </div>
                     ) : (

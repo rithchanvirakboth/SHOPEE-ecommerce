@@ -18,6 +18,10 @@ app.use(
 );
 
 // Routes
+app.get("/", (req, res) => {
+  res.json({ msg: "Welcome to this API" });
+});
+
 app.use("/user", userRoute);
 app.use("/api", uploadRoute);
 

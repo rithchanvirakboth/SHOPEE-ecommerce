@@ -1,0 +1,7 @@
+.menu-canva {
+  font-size: 1.5rem;
+}
+
+.menu-canva:hover {
+  color: var(--menu-color-variant-1)
+}

@@ -1,6 +1,6 @@
 .card { 
   min-height: 90%;
-  width: 60vh;
+  min-width: 60vh;
   margin: 0 auto;
   margin-top: 3vh;
   margin-bottom: 5vh;

@@ -21,7 +21,7 @@ function Navbar() {
         <div className="d-none d-lg-block d-xl-block">
           <Menu />
         </div>
-        <div className="d-md-block d-sm-none d-lg-none">
+        <div className="d-md-block d-sm-block d-lg-none">
           <Logo />
         </div>
       </div>
