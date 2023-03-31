@@ -4,7 +4,7 @@ import Mainpage from "./Features/Mainpage/Mainpage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
-import { dispatchLogin } from "./redux/actions/authAction";
+import { dispatchLogin, fetchUser, dispatchGetUser } from "./redux/actions/authAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +27,12 @@ function App() {
     if (token) {
       const getUser = async () => {
         dispatch(dispatchLogin());
+
+        return fetchUser(token).then(
+          res => {
+            dispatch(dispatchGetUser(res));
+          }
+        )
       }
       getUser();
     }

@@ -1,7 +1,23 @@
 import React from "react";
 import { DROPDOWN_MENU } from "../../utils/const";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
-function Dropdown() {
+function Dropdown({ children }) {
+  // const auth = useSelector((state) => state.authReducer);
+
+  // const { user, isLogged } = auth;
+
+  const handleLogout = async () => {
+    try {
+      await axios.get("/user/logout");
+      localStorage.removeItem("firstLogin");
+      window.location.href = "/login";
+    } catch (err) {
+      window.location.href = "/";
+    }
+  };
+
   return (
     <>
       <div className="dropdown">
@@ -32,6 +48,18 @@ function Dropdown() {
               <li key={index}>
                 {item.divider === true ? (
                   <hr className={item.class} />
+                ) : item.logout === true ? (
+                  <a
+                    className="dropdown-item"
+                    href={item.link}
+                    onClick={handleLogout}
+                  >
+                    {item.title}
+                  </a>
+                ) : item.titleUser === true ? (
+                  <a className="dropdown-item" href="/profile">
+                    {children.name}
+                  </a>
                 ) : (
                   <a className="dropdown-item" href={item.link}>
                     {item.title}

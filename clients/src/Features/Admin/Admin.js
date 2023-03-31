@@ -16,8 +16,8 @@ function mainsite() {
                 <Box children={
                   {
                     title: "Users Management",
-                    desc: "Manage user account",
-                    number: "10",
+                    number: "100",
+                    desc: "account",
                     btn: "Manage"
                   }
                 } />
@@ -26,8 +26,8 @@ function mainsite() {
               <Box children={
                  {
                   title: "Products Management",
-                  desc: "Manage products for sale",
-                  number: "10",
+                  desc: "products",
+                  number: "100",
                   btn: "Manage"
                 }
               } />
@@ -36,8 +36,8 @@ function mainsite() {
               <Box children={
                  {
                   title: "Purchased Management",
-                  desc: "Manage customers purchasement",
-                  number: "10",
+                  desc: "purchasement",
+                  number: "100",
                   btn: "Manage"
                 }
               } />

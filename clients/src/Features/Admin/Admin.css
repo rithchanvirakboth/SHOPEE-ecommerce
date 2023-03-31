@@ -11,7 +11,7 @@
 .admin-h1 {
     font-size: 3em;
     font-weight: 600;
-    color: #000;
+    color: var(--menu-color-variant-2);
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;

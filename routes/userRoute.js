@@ -19,9 +19,9 @@ router.post('/login', loginService.login);
 router.post('/refreshToken', accessTokenService.getAccessToken);
 router.post('/forget_password', forgetPasswordService.forgetPassword);
 router.post('/reset', authentication, resetPasswordService.resetPassword);
-router.post('/logout', logoutService.logout);
 
 // GET
+router.get('/logout', logoutService.logout);
 router.get('/user_data', authentication, userService.getUserinformation);
 router.get('/admin', authentication, adminAuth ,userService.getAllUserInformation);
 

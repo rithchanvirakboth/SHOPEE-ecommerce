@@ -24,9 +24,17 @@
 .box-body {
  margin: 10px 0px 10px 0px;
 }
-
-
 .box-p {
+  font-size: 1em;
+  font-weight: 400;
+  color: var(--text-black);
+  margin: 0;
+  padding: 5px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.box-p2 {
   font-size: 0.8em;
   font-weight: 400;
   color: var(--text-black);

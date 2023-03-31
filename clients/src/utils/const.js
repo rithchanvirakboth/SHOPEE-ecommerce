@@ -4,6 +4,7 @@ export const TITLE = {
   SERVICE: "SERVICE",
   HELP: "HELP",
   CONTACT_US: "CONTACT US",
+  SIGN_IN: "SIGN IN",
 };
 
 export const BRAND_FOOTER = [
@@ -161,10 +162,11 @@ export const MENU_CONTACT_US = [
   },
 ];
 
+
 export const DROPDOWN_MENU = [
   {
     index: 0,
-    title: "Profile",
+    titleUser: true,
     link: "/profile",
   },
   {
@@ -189,6 +191,7 @@ export const DROPDOWN_MENU = [
   },
   {
     index: 5,
+    logout: true,
     title: "Logout",
     link: "/logout",
   },
