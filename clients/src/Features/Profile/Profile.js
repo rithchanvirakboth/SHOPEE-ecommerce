@@ -1,6 +1,12 @@
 import React from "react";
 import logo from "../../Assets/logo.png";
+import { useSelector } from "react-redux";
 function Profile() {
+
+  const auth = useSelector((state) => state.authReducer);
+
+  const { user, isLogged } = auth;
+
   return (
     <div className="container-fluid">
       <div className="row g-0 text-center">
@@ -29,7 +35,7 @@ function Profile() {
             <div className="col-lg-4 col-md-12">
               <div className="d-flex flex-column mb-3">
                 <div className="p-2 text-center">
-                  <img src={logo} alt="logo" width="300px" height="150px" />
+                  <img src={user.data?.avatar} alt="logo" width="300px" height="300px" />
                 </div>
               </div>
             </div>
@@ -42,8 +48,9 @@ function Profile() {
                 </div>
                 <div className="text-center">
                 <ul className="ul-profile">
-                  <li className="list-group-item profile-list">Name: </li><span className="profile-data">Rithboth</span>
-                  <li className="list-group-item profile-list">Email: </li><span className="profile-data">rithboth0@gmail.com</span>
+                  <li className="list-group-item profile-list">Username: </li><span className="profile-data">{ user.data?.userName }</span>
+                  <li className="list-group-item profile-list">Name: </li><span className="profile-data">{ user.data?.lastName} { user.data?.firstName }</span>
+                  <li className="list-group-item profile-list">Email: </li><span className="profile-data">{ user.data?.email }</span>
                   <li className="list-group-item profile-list">Phone: </li><span className="profile-data">015812384</span>
                   <li className="list-group-item profile-list">Address: </li><span className="profile-data">161A </span>
                 </ul>

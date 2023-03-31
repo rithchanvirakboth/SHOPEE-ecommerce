@@ -29,6 +29,18 @@ const userSchema = new schema({
     trim: true,
     unique: true
   },
+  bio: {
+    type: String,
+    max: 200
+  },
+  phoneNumber: {
+    type: String,
+    max: 11
+  },
+  address: {
+    type: String,
+    max: 50
+  },
   password: {
     type: String,
     required: [true, 'Please enter your password'],

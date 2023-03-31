@@ -1,13 +1,9 @@
 import React from "react";
 import { DROPDOWN_MENU } from "../../utils/const";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 function Dropdown({ children }) {
-  // const auth = useSelector((state) => state.authReducer);
-
-  // const { user, isLogged } = auth;
-
+  
   const handleLogout = async () => {
     try {
       await axios.get("/user/logout");
