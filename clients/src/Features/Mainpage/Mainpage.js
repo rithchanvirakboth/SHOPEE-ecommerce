@@ -7,6 +7,7 @@ import Loginpage from '../Login/Loginpage';
 import NotFound from '../NotFound/NotFound';
 import Profile from '../Profile/Profile';
 import Registerpage from '../Register/Registerpage';
+import ResetPassword from '../ResetPassword/ResetPassword';
 
 function Mainpage() {
   return (
@@ -19,6 +20,7 @@ function Mainpage() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/user/activate/:activation_token" element={<EmailActivate />} />
           <Route path="/forgetPassword" element={<ForgetPassword />} />
+          <Route path="/user/reset/:access_token" element={<ResetPassword />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

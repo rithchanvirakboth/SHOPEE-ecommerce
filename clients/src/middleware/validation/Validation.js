@@ -5,8 +5,8 @@ export const isEmpty = (value) => {
   return false;
 }
 
-export const isLength = (password) => {
-  if (password.length < 6) {
+export const isLength = (password, confirmPassword) => {
+  if (password.length < 6 || confirmPassword.length < 6) {
     return true;
   }
   return false
