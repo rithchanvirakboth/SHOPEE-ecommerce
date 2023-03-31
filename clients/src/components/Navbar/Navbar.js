@@ -3,6 +3,7 @@ import Logo from '../BrandLogo/brandLogo';
 import Dropdown from '../Dropdown/Dropdown';
 import Offcanva from '../Offcanva/Offcanva';
 import Menu from '../Menu/Menu';
+
 function Navbar() {
   return (
     <div className="container-fluid">
