@@ -7,6 +7,7 @@
 @import url('./EmailActivate/EmailActivate.css'); 
 @import url('./ForgetPassword/ForgetPassword.css');
 @import url('./ResetPassword/ResetPassword.css');
+@import url('./Setting/Setting.css');
 
 /* Admin */
 @import url('./Admin/Admin.css');

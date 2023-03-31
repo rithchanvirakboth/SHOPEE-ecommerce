@@ -8,9 +8,9 @@ function Dropdown({ children }) {
     try {
       await axios.get("/user/logout");
       localStorage.removeItem("firstLogin");
-      window.location.href = "/login";
-    } catch (err) {
       window.location.href = "/";
+    } catch (err) {
+      window.location.href = "/login";
     }
   };
 
