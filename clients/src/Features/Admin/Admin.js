@@ -10,9 +10,9 @@ function mainsite() {
               <h1 className="admin-h1">DASHBOARD</h1>
             </div>
           </div>
-          <div class="col-12 mt-4">
-            <div class="row d-flex justify-content-around ">
-              <div class="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
+          <div className="col-12 mt-4">
+            <div className="row d-flex justify-content-around ">
+              <div className="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
                 <Box children={
                   {
                     title: "Users Management",
@@ -22,7 +22,7 @@ function mainsite() {
                   }
                 } />
               </div>
-              <div class="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
+              <div className="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
               <Box children={
                  {
                   title: "Products Management",
@@ -32,7 +32,7 @@ function mainsite() {
                 }
               } />
               </div>
-              <div class="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
+              <div className="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
               <Box children={
                  {
                   title: "Purchased Management",

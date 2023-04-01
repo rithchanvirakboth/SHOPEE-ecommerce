@@ -94,7 +94,7 @@ export const MENU_CONTACT_US = [
     socialMedia: true,
     name: "FOLLOW US",
     socialLink: [
-      { 
+      {
         index: 0,
         logo: (
           <svg
@@ -162,7 +162,6 @@ export const MENU_CONTACT_US = [
   },
 ];
 
-
 export const DROPDOWN_MENU = [
   {
     index: 0,
@@ -186,13 +185,19 @@ export const DROPDOWN_MENU = [
   },
   {
     index: 4,
+    title: "Change Password",
+    link: "/forgetPassword",
+  },
+  {
+    index: 5,
     divider: true,
     class: "dropdown-divider",
   },
   {
-    index: 5,
+    index: 6,
     logout: true,
     title: "Logout",
     link: "/logout",
   },
 ];
+

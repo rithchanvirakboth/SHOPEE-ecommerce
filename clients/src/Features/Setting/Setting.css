@@ -31,3 +31,23 @@
   margin-left: 50px;
   margin-bottom: 10px;
 }
+
+.btn-switch-left {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  outline: none;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.btn-switch-right {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  outline: none;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 0px 15px 15px 0px;
+}
+
+.card-info {
+  margin-top: 75px;
+}
