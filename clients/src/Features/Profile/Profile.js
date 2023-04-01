@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../Assets/logo.png";
 import { useSelector } from "react-redux";
+import { DUMMY_DATA } from "../../utils/const";
 function Profile() {
 
   const auth = useSelector((state) => state.authReducer);
@@ -26,10 +27,10 @@ function Profile() {
                   <h3>ABOUT</h3>
                 </div>
                 <div className="p-2 text-center">
-                  <p>text</p>
+                  <p>{ user.data?.bio || DUMMY_DATA.BIO }</p>
                 </div>
               </div>
-            </div>
+          </div>
 
             {/* Logo */}
             <div className="col-lg-4 col-md-12">
@@ -48,11 +49,11 @@ function Profile() {
                 </div>
                 <div className="text-center">
                 <ul className="ul-profile">
-                  <li className="list-group-item profile-list">Username: </li><span className="profile-data">{ user.data?.userName }</span>
-                  <li className="list-group-item profile-list">Name: </li><span className="profile-data">{ user.data?.lastName} { user.data?.firstName }</span>
-                  <li className="list-group-item profile-list">Email: </li><span className="profile-data">{ user.data?.email }</span>
-                  <li className="list-group-item profile-list">Phone: </li><span className="profile-data">015812384</span>
-                  <li className="list-group-item profile-list">Address: </li><span className="profile-data">161A </span>
+                  <li className="list-group-item profile-list">Username: </li><span className="profile-data">{ user.data?.userName || "==" }</span>
+                  <li className="list-group-item profile-list">Name: </li><span className="profile-data">{ user.data?.lastName} { user.data?.firstName || "--" }</span>
+                  <li className="list-group-item profile-list">Email: </li><span className="profile-data">{ user.data?.email || "--" }</span>
+                  <li className="list-group-item profile-list">Phone: </li><span className="profile-data">{ user.data?.phoneNumber || DUMMY_DATA.PHONE }</span>
+                  <li className="list-group-item profile-list">Address: </li><span className="profile-data">{ user.data?.address || DUMMY_DATA.ADDRESS } </span>
                 </ul>
                 </div>
               </div>
