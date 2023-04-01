@@ -2,6 +2,15 @@
   width: 100%;
   background-color: rgb(14, 14, 55);
 }
+.box-image-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  border-radius: 50%;
+}
 
 .ul-profile {
   padding: 0;

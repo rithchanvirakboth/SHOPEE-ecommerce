@@ -43,7 +43,7 @@ function Dropdown({ children }) {
             return (
               <li key={index}>
                 {item.divider === true ? (
-                  <hr className={item.class} />
+                  <hr className={item.className} />
                 ) : item.logout === true ? (
                   <a
                     className="dropdown-item"

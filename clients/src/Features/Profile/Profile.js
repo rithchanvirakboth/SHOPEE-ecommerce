@@ -34,8 +34,8 @@ function Profile() {
             {/* Logo */}
             <div className="col-lg-4 col-md-12">
               <div className="d-flex flex-column mb-3">
-                <div className="p-2 text-center">
-                  <img src={user.data?.avatar} alt="logo" width="300px" height="300px" />
+                <div className="box-image-profile p-2 text-center">
+                  <img src={user.data?.avatar} alt="logo" width="300px" height="300px" className="logo" />
                 </div>
               </div>
             </div>

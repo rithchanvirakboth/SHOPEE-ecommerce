@@ -191,7 +191,7 @@ export const DROPDOWN_MENU = [
   {
     index: 5,
     divider: true,
-    class: "dropdown-divider",
+    className: "dropdown-divider",
   },
   {
     index: 6,

@@ -4,8 +4,8 @@ function NotFound() {
   return (
     <div className="NotFound container">
       <div className="d-flex justify-content-center  align-items-center">
-        <div class="row">
-          <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+        <div className="row">
+          <div className="col-12 col-lg-12 col-md-12 col-sm-12">
             <div className="d-flex-flex-row">
               <div className="pt-2">
                 <div className="logo">

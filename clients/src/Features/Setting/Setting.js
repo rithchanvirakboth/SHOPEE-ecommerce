@@ -28,25 +28,21 @@ function Setting() {
   const [loading, setLoading] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const [data, setData] = useState(initialState);
+
   const {
     firstName,
     lastName,
     userName,
     bio,
-    // password,
-    // confirmPassword,
+    password,
+    confirmPassword,
     phoneNumber,
     address,
     success,
     error,
   } = data;
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-  };
-
-  const changeAvatar = async e => {
+  const changeAvatar = async (e) => {
     e.preventDefault();
     try {
       const file = e.target.files[0];
@@ -106,7 +102,47 @@ function Setting() {
         error: "",
         success: "Update Success!",
       });
-      console.log(avatar ? avatar : user.data.avatar)
+    } catch (error) {
+      setData({
+        ...data,
+        error: error.response.data.msg,
+        success: "",
+      });
+    }
+  };
+
+  const updatePassword = async () => {
+    try {
+      if (password.length < 6) {
+        return setData({
+          ...data,
+          error: "Password must be at least 6 characters.",
+          success: "",
+        });
+      }
+      if (password !== confirmPassword) {
+        return setData({
+          ...data,
+          error: "Password did not match.",
+          success: "",
+        });
+      }
+      await axios.post(
+        "/user/reset",
+        {
+          password,
+          confirmPassword: password,
+        },
+        {
+          headers: { Authorization: token },
+        }
+      );
+
+      setData({
+        ...data,
+        error: "",
+        success: "Password updated successfully!",  
+      });
     } catch (error) {
       setData({
         ...data,
@@ -118,6 +154,10 @@ function Setting() {
 
   const handleUpdate = () => {
     updateInformation();
+  };
+
+  const handleChangePassword = () => {
+    updatePassword();
   };
 
   const handleSwitch = () => {
@@ -132,7 +172,7 @@ function Setting() {
         {loading && <h3>Loading.....</h3>}
       </div>
       <div className="row col-12 d-flex justify-content-center">
-        <div className="p-2 col-12 col-lg-5 d-none d-lg-block mt-3">
+        <div className="p-2 col-12 col-lg-5 d-none d-lg-block mt-4 mb-4">
           <div className="d-flex justify-content-center card-info">
             <BoxSetting
               children={
@@ -241,7 +281,7 @@ function Setting() {
             />
           </div>
         </div>
-        <div class="p-2 col-12 col-lg-5 col-md-12 col-sm-12 mt-3">
+        <div className="p-2 col-12 col-lg-5 col-md-12 col-sm-12 mt-3">
           <div className="tab-switch d-flex justify-content-center">
             <button className="btn-switch-left" onClick={handleSwitch}>
               Information
@@ -353,7 +393,11 @@ function Setting() {
                   </div>
 
                   <div className="d-flex flex-row my-4 mx-4">
-                    <button onClick={handleUpdate} className="btn-submit">
+                    <button
+                      disabled={loading}
+                      onClick={handleUpdate}
+                      className="btn-submit"
+                    >
                       Update
                     </button>
                   </div>
@@ -376,7 +420,9 @@ function Setting() {
                       id="password"
                       name="password"
                       defaultValue={user.data?.password}
-                      onChange={handleInputChange}
+                      onChange={(e) =>
+                        setData({ ...data, password: e.target.value })
+                      }
                     />
                   </div>
                   <div className="d-flex flex-column text-start mx-4 my-2">
@@ -388,11 +434,17 @@ function Setting() {
                       id="confirmPassword"
                       name="confirmPassword"
                       defaultValue={user.data?.confirmPassword}
-                      onChange={handleInputChange}
+                      onChange={(e) =>
+                        setData({ ...data, confirmPassword: e.target.value })
+                      }
                     />
                   </div>
                   <div className="d-flex flex-row my-3 mx-4">
-                    <button type="submit" className="btn-submit">
+                    <button
+                      disabled={loading}
+                      onClick={handleChangePassword}
+                      className="btn-submit"
+                    >
                       Change
                     </button>
                   </div>
