@@ -11,6 +11,9 @@ import ResetPassword from '../ResetPassword/ResetPassword';
 import Admin from '../Admin/Admin';
 import { useSelector } from 'react-redux';
 import Setting from '../Setting/Setting';
+import User from '../Admin/User/User';
+import Product from '../Admin/Product/Product';
+import Purchasement from '../Admin/Purchasement/Purchasement';
 
 function Mainpage() {
   const auth = useSelector((state) => state.authReducer);
@@ -32,7 +35,11 @@ function Mainpage() {
           <Route path="*" element={<NotFound />} />
 
           {/* admin */}
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<Admin /> } />
+          <Route path="/admin/*" element={<NotFound /> } />
+          <Route path="/admin/user" element={<User /> } />
+          <Route path="/admin/product" element={<Product /> } />
+          <Route path="/admin/purchasement" element={<Purchasement /> } />
         </Routes>
       </Router>
     </>

@@ -18,7 +18,8 @@ function mainsite() {
                     title: "Users Management",
                     number: "100",
                     desc: "account",
-                    btn: "Manage"
+                    btn: "Manage",
+                    link: "/admin/user"
                   }
                 } />
               </div>
@@ -28,7 +29,8 @@ function mainsite() {
                   title: "Products Management",
                   desc: "products",
                   number: "100",
-                  btn: "Manage"
+                  btn: "Manage",
+                  link: "/admin/product"
                 }
               } />
               </div>
@@ -38,7 +40,8 @@ function mainsite() {
                   title: "Purchased Management",
                   desc: "purchasement",
                   number: "100",
-                  btn: "Manage"
+                  btn: "Manage",
+                  link: "/admin/purchasement"
                 }
               } />
               </div>

@@ -13,8 +13,8 @@ function Box({children}) {
               <h3 className="box-h3">{ children.number }</h3>
               <h5 className="box-h4">{ children.desc }</h5>
             </div>
-            <div className="box-button mx-3">
-              <button className="btn-admin">{ children.btn }</button>
+            <div className="box-button text-center mx-3 mb-3">
+              <a className="btn-admin" href={ children.link } >{ children.btn }</a>
             </div>
           </div>
         </div>

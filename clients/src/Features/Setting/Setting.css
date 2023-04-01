@@ -40,6 +40,12 @@
   border-radius: 15px 0px 0px 15px;
 }
 
+.btn-switch-left:hover {
+  background-color: var(--menu-color-variant-2);
+  color: var(--text-white);
+  transition: 0.5s ease;
+}
+
 .btn-switch-right {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
   outline: none;
@@ -48,6 +54,9 @@
   border-radius: 0px 15px 15px 0px;
 }
 
-.card-info {
 
+.btn-switch-right:hover {
+  background-color: var(--menu-color-variant-2);
+  color: var(--text-white);
+  transition: 0.5s ease;
 }
