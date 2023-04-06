@@ -1,28 +1,26 @@
-import ACTIONS from "./index";
-import axios from "axios";
+import ACTIONS from './index';
+import axios from 'axios';
 
 export const dispatchLogin = () => {
   return {
     type: ACTIONS.LOGIN,
-  };
-};
+  }
+}
 
 export const fetchUser = async (token) => {
-  const res = await axios.get("/user/user_data", {
-    headers: {
-      Authorization: token,
-    },
+  const res = await axios.get('/user/user_data', {
+    headers: { Authorization: token },
   });
 
-  return res;
-};
+  return res
+}
 
 export const dispatchGetUser = (res) => {
   return {
     type: ACTIONS.GET_USER,
-    payload: {
+    payload:{
       user: res.data,
-      isAdmin: res.data.role === "user" ? true : false,
+      isAdmin: res.data.data.role === 1 ? true : false
     }
-  };
+  }
 }

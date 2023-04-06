@@ -5,3 +5,7 @@
 .menu-canva:hover {
   color: var(--menu-color-variant-1)
 }
+
+.admin-console {
+  margin-top: 50px;
+}

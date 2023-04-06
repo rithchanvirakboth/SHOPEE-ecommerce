@@ -54,8 +54,8 @@ const userSchema = new schema({
     max: 20
   },
   role: {
-    type: String,
-    default: 'user'
+    type: Number,
+    default: 0 // 0 = user, 1 = admin
   },
   avatar: {
     type: String,

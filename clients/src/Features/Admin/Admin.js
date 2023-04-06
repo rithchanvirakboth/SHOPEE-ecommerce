@@ -1,6 +1,10 @@
 import React from "react";
 import Box from "../../components/Box/Box";
-function mainsite() {
+
+function Admin() {
+
+
+ 
   return (
     <>
       <div className="mainsite container">
@@ -13,37 +17,37 @@ function mainsite() {
           <div className="col-12 mt-4">
             <div className="row d-flex justify-content-around ">
               <div className="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
-                <Box children={
-                  {
+                <Box
+                  children={{
                     title: "Users Management",
                     number: "100",
                     desc: "account",
                     btn: "Manage",
-                    link: "/admin/user"
-                  }
-                } />
+                    link: "/admin/user",
+                  }}
+                />
               </div>
               <div className="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
-              <Box children={
-                 {
-                  title: "Products Management",
-                  desc: "products",
-                  number: "100",
-                  btn: "Manage",
-                  link: "/admin/product"
-                }
-              } />
+                <Box
+                  children={{
+                    title: "Products Management",
+                    desc: "products",
+                    number: "100",
+                    btn: "Manage",
+                    link: "/admin/product",
+                  }}
+                />
               </div>
               <div className="col-12 col-lg-3 col-md-12 col-sm-12 mb-2">
-              <Box children={
-                 {
-                  title: "Purchased Management",
-                  desc: "purchasement",
-                  number: "100",
-                  btn: "Manage",
-                  link: "/admin/purchasement"
-                }
-              } />
+                <Box
+                  children={{
+                    title: "Purchased Management",
+                    desc: "purchasement",
+                    number: "100",
+                    btn: "Manage",
+                    link: "/admin/purchasement",
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -53,4 +57,4 @@ function mainsite() {
   );
 }
 
-export default mainsite;
+export default Admin;

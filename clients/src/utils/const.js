@@ -5,6 +5,7 @@ export const TITLE = {
   HELP: "HELP",
   CONTACT_US: "CONTACT US",
   SIGN_IN: "SIGN IN",
+  ADMIN_CONSOLE: "ADMIN CONSOLE",
 };
 
 export const BRAND_FOOTER = [
@@ -186,7 +187,7 @@ export const DROPDOWN_MENU = [
   {
     index: 4,
     title: "Change Password",
-    link: "/forgetPassword",
+    link: "/changePassword",
   },
   {
     index: 5,

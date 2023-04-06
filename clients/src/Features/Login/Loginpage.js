@@ -5,9 +5,7 @@ import {
   ErrorMessage,
   SuccessMessage,
 } from "../../components/Notification/Notification";
-import { 
-  dispatchLogin,
-} from '../../redux/actions/authAction';
+import { dispatchLogin } from "../../Redux/Actions/authAction";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

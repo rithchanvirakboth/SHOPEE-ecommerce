@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Cardbox from "../../components/Cardbox/Cardbox";
 import {
   isEmpty,
-  isLength,
   isMatch,
 } from "../../middleware/validation/Validation";
 import {
@@ -35,91 +34,76 @@ function Registerpage() {
     errorMsg,
     successMsg,
   } = user;
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if(isEmpty(firstName) || 
+    isEmpty(lastName) ||
+    isEmpty(userName) ||
+    isEmpty(email) ||
+    isEmpty(password) ||
+    isEmpty(confirmPassword)){
+      setUser({
+        ...user,
+        errorMsg: "All fields are required",
+        successMsg: "",
+      })
+    }
+    if(password.length < 6 || confirmPassword.length < 6){
+      setUser({
+        ...user,
+        errorMsg: "Password must be at least 6 characters",
+        successMsg: "",
+      })
+    }
+    if(!isMatch(password, confirmPassword)){
+      setUser({
+        ...user,
+        errorMsg: "Password did not match",
+        successMsg: "",
+      })
+    }
+
     try {
-      if (
-        isEmpty(firstName) ||
-        isEmpty(lastName) ||
-        isEmpty(userName) ||
-        isEmpty(email) ||
-        isEmpty(password) ||
-        isEmpty(confirmPassword)
-      ) {
-        setUser({
-          ...user,
-          errorMsg: "All fields are required",
-          successMsg: "",
-        });
-      } 
-      if (isLength(password)) {
-        setUser({
-          ...user,
-          errorMsg: "Password must be at least 6 characters",
-          successMsg: "",
-        });
-      }
-      if (!isMatch(password, confirmPassword)) {
-        setUser({
-          ...user,
-          errorMsg: "Password did not match",
-          successMsg: "",
-        });
-      }
-      const emailChecker = new RegExp(
-        // eslint-disable-next-line no-useless-escape
-        "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-      );
-      if (!emailChecker.test(email)) {
-        setUser({
-          ...user,
-          errorMsg: "Invalid email address",
-          successMsg: "",
-        });
-      }
-      
-      const res = await axios.post('/user/register', {
+      const res = await axios.post("/user/register", {
         firstName,
         lastName,
         userName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
       });
-      if(userName === res.data.userName) {
-        setUser({
-          ...user,
-          errorMsg: "Username already exists",
-          successMsg: "",
-        });
-      }
 
-      if(email === res.data.email) {
+      if(res.data.email === email){
         setUser({
           ...user,
           errorMsg: "Email already exists",
           successMsg: "",
-        });
+        })
       }
-      
+      if(res.data.userName === userName){
+        setUser({
+          ...user,
+          errorMsg: "Username already exists",
+          successMsg: "",
+        })
+      }
 
       setUser({
         ...user,
         errorMsg: "",
         successMsg: res.data.msg,
       });
-
-      window.location.reload();
-    } catch (error) {
-      error.response.data.msg &&
+    } catch (err) {
+      err.response.data.msg &&
         setUser({
           ...user,
-          errorMsg: error.response.data.msg,
+          errorMsg: err.response.data.msg,
           successMsg: "",
         });
     }
   };
+
 
   return (
     <div className="container d-flex justify-content-center">

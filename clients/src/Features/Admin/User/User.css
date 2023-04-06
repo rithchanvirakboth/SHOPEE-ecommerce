@@ -1,0 +1,15 @@
+.user-dashboard {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1500px;
+    padding: 0 20px;
+}
+
+#inputGroupSelect01 {
+    border-radius: 10px;
+    width: 250px;
+}
+
+.btn-reset {
+    width: 100px;
+}

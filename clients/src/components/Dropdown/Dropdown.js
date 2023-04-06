@@ -3,7 +3,6 @@ import { DROPDOWN_MENU } from "../../utils/const";
 import axios from "axios";
 
 function Dropdown({ children }) {
-  
   const handleLogout = async () => {
     try {
       await axios.get("/user/logout");

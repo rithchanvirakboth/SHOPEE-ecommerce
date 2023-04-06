@@ -9,7 +9,7 @@ import { TITLE } from "../../utils/const";
 function Navbar() {
   const auth = useSelector((state) => state.authReducer);
 
-  const { user, isLogged } = auth;
+  const { user, isSignedIn, isAdmin } = auth;
 
   return (
     <div className="container-fluid">
@@ -32,8 +32,8 @@ function Navbar() {
         </div>
       </div>
 
-      {isLogged ? (
-        <div className="col-lg-3 col-xl-3 d-flex justify-content-center">
+      {isSignedIn ? (
+        <div className="col-lg-2 col-xl-2 d-flex justify-content-center">
           <Dropdown
             children={{
               name: user.data?.userName,
@@ -41,11 +41,22 @@ function Navbar() {
           />
         </div>
       ) : (
-        <div className="col-lg-3 col-xl-3 d-flex justify-content-center">
+        <div className="col-lg-2 col-xl-2 d-flex justify-content-center">
           <div className="text-center signin">
             <a href="/login">{TITLE.SIGN_IN}</a>
           </div>
         </div>
+      )}
+      {isAdmin ? (
+        <div className="col-lg-1 col-xl-1 d-flex justify-content-center">
+          <div className="d-none d-lg-block d-xl-block">
+            <div className="d-flex align-items-center">
+              <a href="/admin">{TITLE.ADMIN_CONSOLE}</a>
+            </div>
+          </div>
+        </div>
+      ) : (
+        " "
       )}
     </div>
   );

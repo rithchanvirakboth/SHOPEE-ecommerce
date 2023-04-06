@@ -2,7 +2,7 @@ const User = require("../model/user");
 const adminAuth = async(req, res, next) => {
   try {
     const user = await User.findOne({ _id: req.user.id })
-    if (user.role !== "admin") {
+    if (user.role !== 1) {
       return res.status(400).json({ message: "You don't have access to this page" });
     }
 

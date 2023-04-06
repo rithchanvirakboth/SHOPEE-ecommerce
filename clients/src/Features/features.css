@@ -8,6 +8,7 @@
 @import url('./ForgetPassword/ForgetPassword.css');
 @import url('./ResetPassword/ResetPassword.css');
 @import url('./Setting/Setting.css');
+@import url('./ChangePassword/ChangePassword.css');
 
 /* Admin */
 @import url('./Admin/Admin.css');

@@ -1,45 +1,48 @@
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import Mainpage from "./Features/Mainpage/Mainpage";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import axios from "axios";
-import { dispatchLogin, fetchUser, dispatchGetUser } from "./redux/actions/authAction";
+import React, { useEffect } from 'react';
+import {BrowserRouter as Router} from 'react-router-dom'
+
+import Navbar from './components/Navbar/Navbar'
+import Mainpage from './Features/Mainpage/Mainpage'
+import Footer from './components/Footer/Footer'
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { fetchUser, dispatchGetUser, dispatchLogin } from './Redux/Actions/authAction';
 
 function App() {
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.authReducer);
+
   const token = useSelector((state) => state.tokenReducer);
+  const auth = useSelector((state) => state.authReducer);
 
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");
     if (firstLogin) {
-      const refreshToken = async () => {
-        const res = await axios.post('/user/refreshToken', null)
-        dispatch({ type: "GET_TOKEN", payload: res.data.access_token });
+      const getToken = async () => {
+        const res = await axios.post('/user/refreshToken', null);
+        dispatch({ type: 'GET_TOKEN', payload: res.data.access_token });
+      };
+
+      getToken();
     }
-    refreshToken()
-    }
-  }, [auth.isLogged, dispatch])
+  
+  }, [auth.isSignedIn, dispatch]);
 
   useEffect(() => {
     if (token) {
       const getUser = async () => {
         dispatch(dispatchLogin());
 
-        return fetchUser(token).then(
-          res => {
-            dispatch(dispatchGetUser(res));
-          }
-        )
-      }
+        return fetchUser(token).then((res) => {
+          dispatch(dispatchGetUser(res));
+        });
+      };
       getUser();
     }
   }, [token, dispatch]);
-
+          
 
   return (
-    <div>
+    <Router>
       <nav className="navbar navbar-expand-lg navbar-light">
         <Navbar />
       </nav>
@@ -49,7 +52,7 @@ function App() {
       <footer className="footer">
         <Footer />
       </footer>
-    </div>
+    </Router>
   );
 }
 

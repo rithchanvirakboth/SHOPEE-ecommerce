@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BoxSetting from "../../components/BoxSetting/BoxSetting";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import {
   ErrorMessage,
   SuccessMessage,
 } from "../../components/Notification/Notification";
+
+import {
+  fetchAllUsers,
+  dispatchGetAllUsers,
+} from "../../Redux/Actions/usersAction";
 
 const initialState = {
   firstName: "",
@@ -23,24 +28,31 @@ const initialState = {
 function Setting() {
   const auth = useSelector((state) => state.authReducer);
   const token = useSelector((state) => state.tokenReducer);
-  const { user } = auth;
-  const [ViewAs, setViewAs] = useState(true);
+  const { user, isAdmin } = auth;
   const [loading, setLoading] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const [data, setData] = useState(initialState);
+  const [callback] = useState(false);
 
   const {
     firstName,
     lastName,
     userName,
     bio,
-    password,
-    confirmPassword,
     phoneNumber,
     address,
     success,
     error,
   } = data;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isAdmin) {
+      return fetchAllUsers(token).then((res) => {
+        dispatch(dispatchGetAllUsers(res));
+      });
+    }
+  }, [token, isAdmin, dispatch, callback]);
 
   const changeAvatar = async (e) => {
     e.preventDefault();
@@ -111,58 +123,10 @@ function Setting() {
     }
   };
 
-  const updatePassword = async () => {
-    try {
-      if (password.length < 6) {
-        return setData({
-          ...data,
-          error: "Password must be at least 6 characters.",
-          success: "",
-        });
-      }
-      if (password !== confirmPassword) {
-        return setData({
-          ...data,
-          error: "Password did not match.",
-          success: "",
-        });
-      }
-      await axios.post(
-        "/user/reset",
-        {
-          password,
-          confirmPassword: password,
-        },
-        {
-          headers: { Authorization: token },
-        }
-      );
-
-      setData({
-        ...data,
-        error: "",
-        success: "Password updated successfully!",  
-      });
-    } catch (error) {
-      setData({
-        ...data,
-        error: error.response.data.msg,
-        success: "",
-      });
-    }
-  };
-
   const handleUpdate = () => {
     updateInformation();
   };
 
-  const handleChangePassword = () => {
-    updatePassword();
-  };
-
-  const handleSwitch = () => {
-    setViewAs(!ViewAs);
-  };
 
   return (
     <div className="Setting container">
@@ -282,176 +246,120 @@ function Setting() {
           </div>
         </div>
         <div className="p-2 col-12 col-lg-5 col-md-12 col-sm-12 mt-3">
-          <div className="tab-switch d-flex justify-content-center">
-            <button className="btn-switch-left" onClick={handleSwitch}>
-              Information
-            </button>
-            <button className="btn-switch-right" onClick={handleSwitch}>
-              Change Password
-            </button>
+          <div className="header-setting text-start ms-4 mt-4">
+            <h4 className="header-top mt-2 mb-2">SETTING INFORMATION</h4>
           </div>
-          {ViewAs === true ? (
-            <>
-              <div className="header-setting text-start ms-4 mt-4">
-                <h4 className="header-top mt-2 mb-2">SETTING INFORMATION</h4>
+          <div className="d-flex justify-content-center">
+            <div className="col-12 col-md-12 col-sm-12">
+              <div className="d-flex flex-column text-start mx-4 my-2">
+                <label className="label-setting">Avatar</label>
+                <input
+                  type="file"
+                  name="file"
+                  className="form-control"
+                  id="file_up"
+                  onChange={changeAvatar}
+                />
               </div>
-              <div className="d-flex justify-content-center">
-                <div className="col-12 col-md-12 col-sm-12">
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">Avatar</label>
-                    <input
-                      type="file"
-                      name="file"
-                      className="form-control"
-                      id="file_up"
-                      onChange={changeAvatar}
-                    />
-                  </div>
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">First Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter your first name"
-                      id="firstName"
-                      name="firstName"
-                      defaultValue={user.data?.firstName}
-                      onChange={(e) =>
-                        setData({ ...data, firstName: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">Last Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter your last name"
-                      id="lastName"
-                      name="lastName"
-                      defaultValue={user.data?.lastName}
-                      onChange={(e) =>
-                        setData({ ...data, lastName: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">Username</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter your username"
-                      id="userName"
-                      name="userName"
-                      defaultValue={user.data?.userName}
-                      onChange={(e) =>
-                        setData({ ...data, userName: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">Phone Number</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter your phone number"
-                      id="phoneNumber"
-                      name="phoneNumber"
-                      defaultValue={user.data?.phoneNumber}
-                      onChange={(e) =>
-                        setData({ ...data, phoneNumber: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">Bio</label>
-                    <textarea
-                      className="form-control"
-                      placeholder="Enter your bio"
-                      id="bio"
-                      name="bio"
-                      maxLength="400"
-                      defaultValue={user.data?.bio}
-                      onChange={(e) =>
-                        setData({ ...data, bio: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">Address</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter your address"
-                      id="address"
-                      name="address"
-                      defaultValue={user.data?.address}
-                      onChange={(e) =>
-                        setData({ ...data, address: e.target.value })
-                      }
-                    />
-                  </div>
+              <div className="d-flex flex-column text-start mx-4 my-2">
+                <label className="label-setting">First Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your first name"
+                  id="firstName"
+                  name="firstName"
+                  defaultValue={user.data?.firstName}
+                  onChange={(e) =>
+                    setData({ ...data, firstName: e.target.value })
+                  }
+                />
+              </div>
+              <div className="d-flex flex-column text-start mx-4 my-2">
+                <label className="label-setting">Last Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your last name"
+                  id="lastName"
+                  name="lastName"
+                  defaultValue={user.data?.lastName}
+                  onChange={(e) =>
+                    setData({ ...data, lastName: e.target.value })
+                  }
+                />
+              </div>
+              <div className="d-flex flex-column text-start mx-4 my-2">
+                <label className="label-setting">Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your username"
+                  id="userName"
+                  name="userName"
+                  defaultValue={user.data?.userName}
+                  onChange={(e) =>
+                    setData({ ...data, userName: e.target.value })
+                  }
+                />
+              </div>
+              <div className="d-flex flex-column text-start mx-4 my-2">
+                <label className="label-setting">Phone Number</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your phone number"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  defaultValue={user.data?.phoneNumber}
+                  onChange={(e) =>
+                    setData({ ...data, phoneNumber: e.target.value })
+                  }
+                />
+              </div>
+              <div className="d-flex flex-column text-start mx-4 my-2">
+                <label className="label-setting">Bio</label>
+                <textarea
+                  className="form-control"
+                  placeholder="Enter your bio"
+                  id="bio"
+                  name="bio"
+                  maxLength="400"
+                  defaultValue={user.data?.bio}
+                  onChange={(e) => setData({ ...data, bio: e.target.value })}
+                />
+              </div>
+              <div className="d-flex flex-column text-start mx-4 my-2">
+                <label className="label-setting">Address</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your address"
+                  id="address"
+                  name="address"
+                  defaultValue={user.data?.address}
+                  onChange={(e) =>
+                    setData({ ...data, address: e.target.value })
+                  }
+                />
+              </div>
 
-                  <div className="d-flex flex-row my-4 mx-4">
-                    <button
-                      disabled={loading}
-                      onClick={handleUpdate}
-                      className="btn-submit"
-                    >
-                      Update
-                    </button>
-                  </div>
-                </div>
+              <div className="d-flex flex-row my-4 mx-4">
+                <button
+                  disabled={loading}
+                  onClick={handleUpdate}
+                  className="btn-submit"
+                >
+                  Update
+                </button>
               </div>
-            </>
-          ) : (
-            <>
-              <div className="header-setting text-start ms-4 mt-4">
-                <h4 className="header-top mt-2 mb-2">PASSWORD RESET</h4>
+              <div className="d-flex flex-row my-4 mx-4">
+                <a href="/ChangePassword" className="btn-change-password">
+                  Change Password?
+                </a>
               </div>
-              <div className="d-flex justify-content-center">
-                <div className="col-12 col-md-12 col-sm-12">
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">New Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Enter your new password"
-                      id="password"
-                      name="password"
-                      defaultValue={user.data?.password}
-                      onChange={(e) =>
-                        setData({ ...data, password: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="d-flex flex-column text-start mx-4 my-2">
-                    <label className="label-setting">Confirm Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Enter your confirm password"
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      defaultValue={user.data?.confirmPassword}
-                      onChange={(e) =>
-                        setData({ ...data, confirmPassword: e.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="d-flex flex-row my-3 mx-4">
-                    <button
-                      disabled={loading}
-                      onClick={handleChangePassword}
-                      className="btn-submit"
-                    >
-                      Change
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

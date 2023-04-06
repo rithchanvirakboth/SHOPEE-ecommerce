@@ -1,7 +1,11 @@
 import React from "react";
 import { MENU } from "../../utils/const";
 import BrandLogo from "../BrandLogo/brandLogo";
+import { useSelector } from "react-redux";
+
 function Offcanva() {
+  const auth = useSelector((state) => state.authReducer);
+  const { isAdmin } = auth;
   return (
     <>
       <button
@@ -52,7 +56,16 @@ function Offcanva() {
               </li>
             </div>
           ))}
+          
+          { isAdmin ? (
+              <div className="text-center admin-console">
+              <li className="dropdown-item my-4">
+                <a href="/admin" className="menu-canva">Admin Console</a>
+              </li>
+            </div>
+          ): " "}
         </div>
+
       </div>
     </>
   );
