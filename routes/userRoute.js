@@ -10,7 +10,7 @@ const adminAuth = require('../middleware/admin-auth');
 const logoutService = require('../services/logout');
 const userService = require('../services/user');
 const settingService = require('../services/setting');
-const AdminCreateUser = require('../services/AdminCreateUser');
+const AdminModule = require('../services/AdminModule');
 
 // POST 
 
@@ -22,7 +22,8 @@ router.post('/forget_password', forgetPasswordService.forgetPassword);
 router.post('/reset', authentication, resetPasswordService.resetPassword);
 
 // ADMIN create 
-router.post('/createUser', AdminCreateUser.createUser);
+router.post('/createUser', AdminModule.createUser);
+router.patch('/updateUser/:id', authentication, adminAuth, AdminModule.updateUser);
 
 // GET
 router.get('/logout', logoutService.logout);

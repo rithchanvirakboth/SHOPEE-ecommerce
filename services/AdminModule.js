@@ -1,7 +1,7 @@
 const User = require("../model/user");
 const bcrypt = require("bcrypt");
 
-const AdminCreateUser = {
+const AdminModule = {
   createUser: async (req, res) => {
     try {
       const { firstName, lastName, userName, email, password, confirmPassword, bio, phoneNumber, address } = req.body;
@@ -50,7 +50,41 @@ const AdminCreateUser = {
     } catch (error) {
       return res.status(500).json({ msg: error.message });
     }
-  }  
+  },
+  updateUser: async (req, res) => {
+      try {
+        const {
+          lastName,
+          firstName,
+          avatar,
+          userName,
+          bio,
+          phoneNumber,
+          address,
+        } = req.body;
+  
+        await User.findOneAndUpdate(
+          { _id: req.params.id },
+          {
+            lastName,
+            firstName,
+            userName,
+            bio,
+            avatar,
+            phoneNumber,
+            address,
+          }
+        );
+  
+        res.json({ message: "User updated successfully" });
+      } catch (err) {
+        return res.status(500).json({ message: err.message });
+      }    
+  },
+
+  deleteUser: async (req, res) => {
+
+  }
 }
 
 function validateEmail(email) {
@@ -58,4 +92,4 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-module.exports = AdminCreateUser;
+module.exports = AdminModule;
