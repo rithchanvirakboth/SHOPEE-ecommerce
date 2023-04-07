@@ -10,6 +10,7 @@ const adminAuth = require('../middleware/admin-auth');
 const logoutService = require('../services/logout');
 const userService = require('../services/user');
 const settingService = require('../services/setting');
+const AdminCreateUser = require('../services/AdminCreateUser');
 
 // POST 
 
@@ -19,6 +20,9 @@ router.post('/login', loginService.login);
 router.post('/refreshToken', accessTokenService.getAccessToken);
 router.post('/forget_password', forgetPasswordService.forgetPassword);
 router.post('/reset', authentication, resetPasswordService.resetPassword);
+
+// ADMIN create 
+router.post('/createUser', authentication, adminAuth, AdminCreateUser.createUser);
 
 // GET
 router.get('/logout', logoutService.logout);

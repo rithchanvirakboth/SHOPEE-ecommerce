@@ -15,6 +15,8 @@ import User from '../Admin/User/User';
 import Product from '../Admin/Product/Product';
 import Purchasement from '../Admin/Purchasement/Purchasement';
 import ChangePassword from '../ChangePassword/ChangePassword';
+import UpdateUser from '../Admin/User/Update/UpdateUser';
+import CreateUser from '../Admin/User/Create/CreateUser';
 
 function Mainpage() {
   const auth = useSelector((state) => state.authReducer);
@@ -40,6 +42,8 @@ function Mainpage() {
           <Route path="/admin" element={ isAdmin ? <Admin /> : <NotFound /> } />
           <Route path="/admin/*" element={<NotFound /> } />
           <Route path="/admin/user" element={isAdmin ? <User /> : <NotFound />} />
+          <Route path='/admin/user/update/:id' element={isAdmin ? <UpdateUser /> : <NotFound />} />
+          <Route path="/admin/user/createUser" element={isAdmin ? <CreateUser /> : <NotFound />} />
           <Route path="/admin/product" element={isAdmin ? <Product /> : <NotFound /> } />
           <Route path="/admin/purchasement" element={isAdmin ? <Purchasement /> : <NotFound /> } />
         </Routes>
