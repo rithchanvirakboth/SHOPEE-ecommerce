@@ -51,12 +51,12 @@ function User() {
             </label>
           </div>
           <div className="p-2 d-flex align-items-center">
-            <select className="form-select" aria-label="Default select example">
+            {/* <select className="form-select" aria-label="Default select example">
               <option selected>select menu</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
-            </select>
+            </select> */}
           </div>
           <div className="p-2 d-flex align-items-center">
             <button
@@ -75,11 +75,11 @@ function User() {
               width="22"
               height="22"
               fill="currentColor"
-              class="bi bi-plus-lg me-1"
+              className="bi bi-plus-lg me-1"
               viewBox="0 0 16 20"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
               />
             </svg>{"Create"}
@@ -87,7 +87,7 @@ function User() {
         </div>
       </div>
 
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col" className="text-center">

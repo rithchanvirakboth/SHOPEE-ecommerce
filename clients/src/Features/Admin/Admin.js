@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "../../components/Box/Box";
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchGetAllUsers, fetchAllUsers } from "../../Redux/Actions/usersAction";
 
 function Admin() {
-
-
- 
+  const users = useSelector((state) => state.usersReducer);
+  const auth = useSelector((state) => state.authReducer);
+  const token = useSelector((state) => state.tokenReducer);
+  const { isAdmin } = auth; 
+  const [callback] = useState(false);
+  const allUsersLength = users.data.length;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isAdmin) {
+      async function getAllUsers() {
+        return fetchAllUsers(token).then((res) => {
+          dispatch(dispatchGetAllUsers(res));
+        });
+      }
+      getAllUsers();
+    }
+  }, [token, isAdmin, dispatch, callback]);
   return (
     <>
       <div className="mainsite container">
@@ -20,7 +36,7 @@ function Admin() {
                 <Box
                   children={{
                     title: "Users Management",
-                    number: "100",
+                    number: allUsersLength,
                     desc: "account",
                     btn: "Manage",
                     link: "/admin/user",

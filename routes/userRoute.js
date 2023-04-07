@@ -22,7 +22,7 @@ router.post('/forget_password', forgetPasswordService.forgetPassword);
 router.post('/reset', authentication, resetPasswordService.resetPassword);
 
 // ADMIN create 
-router.post('/createUser', authentication, adminAuth, AdminCreateUser.createUser);
+router.post('/createUser', AdminCreateUser.createUser);
 
 // GET
 router.get('/logout', logoutService.logout);
